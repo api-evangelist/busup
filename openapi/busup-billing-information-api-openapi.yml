@@ -1,0 +1,29 @@
+openapi: 3.2.0
+info:
+  title: BusUp Billing information API
+  description: BusUp API version 2
+  contact:
+    email: christian@busup.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 2.0.0
+servers:
+- url: http://api.busup.local/v2
+tags:
+- name: Billing information
+paths:
+  /users/{user}/billing_information:
+    get:
+      tags:
+      - Billing information
+      summary: Find billing information of a user
+      description: Returns billing information of a user
+      operationId: Show
+      responses:
+        '200':
+          description: successful operation
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Pet not found

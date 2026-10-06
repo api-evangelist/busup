@@ -1,0 +1,214 @@
+openapi: 3.2.0
+info:
+  title: BusUp User Plans API
+  description: BusUp API version 2
+  contact:
+    email: christian@busup.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 2.0.0
+servers:
+- url: http://api.busup.local/v2
+tags:
+- name: User Plans
+paths:
+  /commuting/user-plans:
+    get:
+      tags:
+      - User Plans
+      summary: Find all User Plans
+      description: Returns all User Plans
+      operationId: index
+      parameters:
+      - name: filter.*.attribute
+        in: path
+        description: 'Filter Attribute. Ex: id'
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: filter.*.operator
+        in: path
+        description: 'Filter Operator. Ex: ='
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: filter.*.value
+        in: path
+        description: 'Filter Value. Ex: 1'
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: filter.*.scope
+        in: path
+        description: 'Filter Scope. Ex: local'
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: included
+        in: path
+        description: Include model relationships
+        required: true
+        schema:
+          type: string
+      - name: per_page
+        in: path
+        description: Load N entries per page
+        required: true
+        schema:
+          type: integer
+      - name: page
+        in: path
+        description: Load page N
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful operation
+        '401':
+          description: Unauthenticated
+        '404':
+          description: 'Not found: Model or Relationship'
+        '500':
+          description: The action could not be completed
+      security:
+      - api_key: []
+  /commuting/user-plans/{id}:
+    get:
+      tags:
+      - User Plans
+      summary: Find a specific User Plan
+      description: Returns a specific User Plan
+      operationId: show
+      parameters:
+      - name: id
+        in: path
+        description: The ID of the User Plan
+        required: true
+        schema:
+          type: integer
+      - name: included
+        in: path
+        description: Include model relationships
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful operation
+        '401':
+          description: Unauthenticated
+        '404':
+          description: 'Not found: Model or Relationship'
+        '500':
+          description: The action could not be completed
+      security:
+      - api_key: []
+  /commuting/routes/{id}/reservations:
+    get:
+      tags:
+      - User Plans
+      summary: Find all Reservations from a Route
+      description: Returns all Commuting Reservations from a Route
+      operationId: routeReservations
+      parameters:
+      - name: id
+        in: path
+        description: The ID of the Route
+        required: true
+        schema:
+          type: integer
+      - name: filter.*.attribute
+        in: path
+        description: 'Filter Attribute. Ex: id'
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: filter.*.operator
+        in: path
+        description: 'Filter Operator. Ex: ='
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: filter.*.value
+        in: path
+        description: 'Filter Value. Ex: 1'
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: filter.*.scope
+        in: path
+        description: 'Filter Scope. Ex: local'
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: included
+        in: path
+        description: Include model relationships
+        required: true
+        schema:
+          type: string
+      - name: per_page
+        in: path
+        description: Load N entries per page
+        required: true
+        schema:
+          type: integer
+      - name: page
+        in: path
+        description: Load page N
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful operation
+        '401':
+          description: Unauthenticated
+        '404':
+          description: 'Not found: Model or Relationship'
+        '500':
+          description: The action could not be completed
+      security:
+      - api_key: []
+  /commuting/user-plans/create:
+    post:
+      tags:
+      - User Plans
+      summary: Create a user plan
+      operationId: create
+      responses:
+        '200':
+          description: Successful operation
+        '401':
+          description: Unauthenticated
+        '404':
+          description: 'Not found: Model or Relationship'
+        '500':
+          description: The action could not be completed
+      security:
+      - api_key: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: integer
+              example: '63256'
+        description: The id of destination stop of return route

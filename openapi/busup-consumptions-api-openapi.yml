@@ -1,0 +1,110 @@
+openapi: 3.2.0
+info:
+  title: BusUp Consumptions API
+  description: BusUp API version 2
+  contact:
+    email: christian@busup.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 2.0.0
+servers:
+- url: http://api.busup.local/v2
+tags:
+- name: Consumptions
+paths:
+  v2/tickets/consumptions:
+    get:
+      tags:
+      - Consumptions
+      summary: Find All Consumptions
+      description: Returns all Ticket Consumtions
+      operationId: index
+      parameters:
+      - name: admin_id
+        in: path
+        description: The ID of the Admin user that performs the action
+        required: true
+        schema:
+          type: integer
+      - name: sites
+        in: path
+        description: 'Comma separated Commuting Site IDs. Ex: 1,2'
+        required: true
+        schema:
+          type: string
+      - name: dates
+        in: path
+        description: 'Start and End dates separated by comma. Same dates means filter by this day. Ex: YYYY-MM-DD,YYYY-MM-DD'
+        required: true
+        schema:
+          type: string
+      - name: companies
+        in: path
+        description: 'Comma separated Company IDs. Ex: 1,2'
+        required: true
+        schema:
+          type: string
+      - name: cost_centers
+        in: path
+        description: 'Comma separated Cost Center IDs. Ex: 1,2'
+        required: true
+        schema:
+          type: string
+      - name: route_code
+        in: path
+        description: 'Comma separated Route codes. Ex: AAAAA,BBBBB'
+        required: true
+        schema:
+          type: string
+      - name: route_title
+        in: path
+        description: 'Comma separated Route titles. Ex: Route title 1,Route title 2'
+        required: true
+        schema:
+          type: string
+      - name: error
+        in: path
+        description: 'Consumptions with errors. Ex: 1/0'
+        required: true
+        schema:
+          type: string
+      - name: error_type
+        in: path
+        description: 'Comma separated Consumptions Error types. Ex: app.route_invalid,app.without_consumptions'
+        required: true
+        schema:
+          type: string
+      - name: search_by
+        in: path
+        description: 'Filter by: email/name/surname/service_id/worker_id/subscription_id'
+        required: true
+        schema:
+          type: string
+      - name: sort
+        in: path
+        description: 'Sort ASC / DESC by date. Ex: date / -date'
+        required: true
+        schema:
+          type: string
+      - name: per_page
+        in: path
+        description: 'Load N entries per page. Default: 25'
+        required: true
+        schema:
+          type: integer
+      - name: page
+        in: path
+        description: Load page N
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful operation
+        '401':
+          description: Unauthenticated
+        '500':
+          description: The action could not be completed
+      security:
+      - api_key: []

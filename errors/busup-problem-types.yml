@@ -1,0 +1,43 @@
+generated: '2026-10-06'
+method: derived
+generator: derive-problem-types.py
+source:
+- openapi/busup-openapi.json
+format: custom
+envelope:
+  media_type: null
+  schema: null
+coverage:
+  operations: 74
+  statuses_declared: 5
+problems:
+- status: 400
+  title: Bad Request
+  description: Invalid ID supplied
+  operations: 28
+  media_types: []
+  schema: null
+- status: 401
+  title: Unauthorized
+  description: Unauthenticated
+  operations: 42
+  media_types: []
+  schema: null
+- status: 404
+  title: Not Found
+  description: credits not found
+  operations: 61
+  media_types: []
+  schema: null
+- status: 422
+  title: Unprocessable Content
+  description: Invalid fields supplied
+  operations: 9
+  media_types: []
+  schema: null
+- status: 500
+  title: Internal Server Error
+  description: The action could not be completed
+  operations: 46
+  media_types: []
+  schema: null

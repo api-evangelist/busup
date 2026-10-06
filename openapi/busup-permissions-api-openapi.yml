@@ -1,0 +1,111 @@
+openapi: 3.2.0
+info:
+  title: BusUp Permissions API
+  description: BusUp API version 2
+  contact:
+    email: christian@busup.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 2.0.0
+servers:
+- url: http://api.busup.local/v2
+tags:
+- name: Permissions
+paths:
+  /permissions:
+    get:
+      tags:
+      - Permissions
+      summary: Find All the permissions
+      description: Returns all the permissions
+      operationId: index
+      responses:
+        '200':
+          description: successful operation
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Pet not found
+    post:
+      tags:
+      - Permissions
+      summary: Create Permission
+      description: Return Permission Created
+      operationId: Create
+      responses:
+        '200':
+          description: successful operation
+        '500':
+          description: Error created
+      security:
+      - api_key: []
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: The name of permission
+                description:
+                  type: string
+                  description: The description of permission
+              required:
+              - name
+              - description
+    patch:
+      tags:
+      - Permissions
+      summary: Update Permission
+      operationId: UpdatePermission
+      responses:
+        '200':
+          description: successful operation
+        '400':
+          description: Invalid ID supplied
+        '500':
+          description: Error update permission
+      security:
+      - api_key: []
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: The permission that needs to be updated
+                name:
+                  type: string
+                  description: The name of permission
+                description:
+                  type: string
+                  description: The description of permission
+              required:
+              - id
+              - name
+              - description
+  /permissions/{permission}:
+    get:
+      tags:
+      - Permissions
+      summary: Find a specific permission
+      description: Returns a specific permissions
+      operationId: show
+      parameters:
+      - name: permission
+        in: path
+        description: The permission that needs get information
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: successful operation
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Pet not found

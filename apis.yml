@@ -1,23 +1,320 @@
 aid: busup
+
 name: BusUp
-description: 'BusUp is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+
+description: BusUp Technologies provides a cloud‑based platform that enables businesses to digitize and automate their procurement, invoicing,
+  and expense management processes. The solution offers real‑time analytics, integration with ERP and accounting systems, and a mobile app for
+  on‑the‑go approvals. Targeted at mid‑size enterprises, BusUp aims to streamline spend management, improve compliance, and reduce manual effort
+  across the purchase‑to‑pay lifecycle.
+
 url: https://raw.githubusercontent.com/api-evangelist/busup/refs/heads/main/apis.yml
+
 x-type: company
+
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
+
+x-tier: profiled
+x-tier-reason: enrichment pass 2026-10-06 (modular-v1; was harvest)
+
 specificationVersion: '0.20'
+
 created: '2026-10-06'
+
 modified: '2026-10-06'
+
 tags:
 - Company
-apis: []
+- Procurement
+- Spend-Management
+- SaaS
+- Automation
+
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+
 common:
+- type: AgenticAccess
+  url: agentic-access/busup-agentic-access.yml
+- type: Spectral
+  url: rules/busup-rules.yml
+- type: ErrorCatalog
+  url: errors/busup-problem-types.yml
+- type: Conformance
+  url: conformance/busup-conformance.yml
+- type: LLMsTxt
+  url: llms/busup-llms.txt
+- type: Hosts
+  url: hosts/busup-hosts.yml
+- type: Vendors
+  url: vendors/busup-vendors.yml
+- type: PrivacyPolicy
+  url: https://www.busup.com/ca/privacy-policy
+- type: Blog
+  url: https://www.busup.com/en/blog
+- type: GitHubOrganization
+  url: https://github.com/busup
+- type: DomainSecurity
+  url: security/busup-domain-security.yml
 - type: Website
-  url: https://www.nasdaqprivatemarket.com/
+  url: https://www.busup.com/
+
+apis:
+- aid: busup:busup-billing-information-api
+  name: BusUp Billing information API
+  description: The Billing information API from BusUp — 1 operation(s) for billing information.
+  humanURL: https://api.busup.com/api-docs
+  baseURL: https://api.busup.com/v2
+  tags:
+  - Billing information
+  properties:
+  - type: OpenAPI
+    url: openapi/busup-billing-information-api-openapi.yml
+- aid: busup:busup-checkin-api
+  name: BusUp Check In API
+  description: The CheckIn API from BusUp — 1 operation(s) for checkin.
+  humanURL: https://api.busup.com/api-docs
+  baseURL: https://api.busup.com/v2
+  tags:
+  - CheckIn
+  properties:
+  - type: OpenAPI
+    url: openapi/busup-checkin-api-openapi.yml
+- aid: busup:busup-commuting-companies-api
+  name: BusUp Commuting Companies API
+  description: The Commuting Companies API from BusUp — 3 operation(s) for commuting companies.
+  humanURL: https://api.busup.com/api-docs
+  baseURL: https://api.busup.com/v2
+  tags:
+  - Commuting Companies
+  properties:
+  - type: OpenAPI
+    url: openapi/busup-commuting-companies-api-openapi.yml
+- aid: busup:busup-commuting-employees-api
+  name: BusUp Commuting Employees API
+  description: The Commuting Employees API from BusUp — 3 operation(s) for commuting employees.
+  humanURL: https://api.busup.com/api-docs
+  baseURL: https://api.busup.com/v2
+  tags:
+  - Commuting Employees
+  properties:
+  - type: OpenAPI
+    url: openapi/busup-commuting-employees-api-openapi.yml
+- aid: busup:busup-commuting-sites-api
+  name: BusUp Commuting Sites API
+  description: The Commuting Sites API from BusUp — 7 operation(s) for commuting sites.
+  humanURL: https://api.busup.com/api-docs
+  baseURL: https://api.busup.com/v2
+  tags:
+  - Commuting Sites
+  properties:
+  - type: OpenAPI
+    url: openapi/busup-commuting-sites-api-openapi.yml
+- aid: busup:busup-consumptions-api
+  name: BusUp Consumptions API
+  description: The Consumptions API from BusUp — 1 operation(s) for consumptions.
+  humanURL: https://api.busup.com/api-docs
+  baseURL: https://api.busup.com/v2
+  tags:
+  - Consumptions
+  properties:
+  - type: OpenAPI
+    url: openapi/busup-consumptions-api-openapi.yml
+- aid: busup:busup-countries-api
+  name: BusUp Countries API
+  description: The Countries API from BusUp — 1 operation(s) for countries.
+  humanURL: https://api.busup.com/api-docs
+  baseURL: https://api.busup.com/v2
+  tags:
+  - Countries
+  properties:
+  - type: OpenAPI
+    url: openapi/busup-countries-api-openapi.yml
+- aid: busup:busup-credit-memos-api
+  name: BusUp Credit Memos API
+  description: The Credit Memos API from BusUp — 2 operation(s) for credit memos.
+  humanURL: https://api.busup.com/api-docs
+  baseURL: https://api.busup.com/v2
+  tags:
+  - Credit Memos
+  properties:
+  - type: OpenAPI
+    url: openapi/busup-credit-memos-api-openapi.yml
+- aid: busup:busup-datalog-api
+  name: BusUp Datalog API
+  description: The Datalog API from BusUp — 2 operation(s) for datalog.
+  humanURL: https://api.busup.com/api-docs
+  baseURL: https://api.busup.com/v2
+  tags:
+  - Datalog
+  properties:
+  - type: OpenAPI
+    url: openapi/busup-datalog-api-openapi.yml
+- aid: busup:busup-invoices-api
+  name: BusUp Invoices API
+  description: The Invoices API from BusUp — 2 operation(s) for invoices.
+  humanURL: https://api.busup.com/api-docs
+  baseURL: https://api.busup.com/v2
+  tags:
+  - Invoices
+  properties:
+  - type: OpenAPI
+    url: openapi/busup-invoices-api-openapi.yml
+- aid: busup:busup-leisure-companies-api
+  name: BusUp Leisure Companies API
+  description: The Leisure Companies API from BusUp — 2 operation(s) for leisure companies.
+  humanURL: https://api.busup.com/api-docs
+  baseURL: https://api.busup.com/v2
+  tags:
+  - Leisure Companies
+  properties:
+  - type: OpenAPI
+    url: openapi/busup-leisure-companies-api-openapi.yml
+- aid: busup:busup-orders-api
+  name: BusUp Orders API
+  description: The Orders API from BusUp — 2 operation(s) for orders.
+  humanURL: https://api.busup.com/api-docs
+  baseURL: https://api.busup.com/v2
+  tags:
+  - Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/busup-orders-api-openapi.yml
+- aid: busup:busup-permissions-api
+  name: BusUp Permissions API
+  description: The Permissions API from BusUp — 2 operation(s) for permissions.
+  humanURL: https://api.busup.com/api-docs
+  baseURL: https://api.busup.com/v2
+  tags:
+  - Permissions
+  properties:
+  - type: OpenAPI
+    url: openapi/busup-permissions-api-openapi.yml
+- aid: busup:busup-promoters-api
+  name: BusUp Promoters API
+  description: The Promoters API from BusUp — 2 operation(s) for promoters.
+  humanURL: https://api.busup.com/api-docs
+  baseURL: https://api.busup.com/v2
+  tags:
+  - Promoters
+  properties:
+  - type: OpenAPI
+    url: openapi/busup-promoters-api-openapi.yml
+- aid: busup:busup-role-api
+  name: BusUp Role API
+  description: The Role API from BusUp — 2 operation(s) for role.
+  humanURL: https://api.busup.com/api-docs
+  baseURL: https://api.busup.com/v2
+  tags:
+  - Role
+  properties:
+  - type: OpenAPI
+    url: openapi/busup-role-api-openapi.yml
+- aid: busup:busup-roles-api
+  name: BusUp Roles API
+  description: The Roles API from BusUp — 2 operation(s) for roles.
+  humanURL: https://api.busup.com/api-docs
+  baseURL: https://api.busup.com/v2
+  tags:
+  - Roles
+  properties:
+  - type: OpenAPI
+    url: openapi/busup-roles-api-openapi.yml
+- aid: busup:busup-route-rate-api
+  name: BusUp Route Rate API
+  description: The Route Rate API from BusUp — 1 operation(s) for route rate.
+  humanURL: https://api.busup.com/api-docs
+  baseURL: https://api.busup.com/v2
+  tags:
+  - Route Rate
+  properties:
+  - type: OpenAPI
+    url: openapi/busup-route-rate-api-openapi.yml
+- aid: busup:busup-route-stops-api
+  name: BusUp Route Stops API
+  description: The Route Stops API from BusUp — 1 operation(s) for route stops.
+  humanURL: https://api.busup.com/api-docs
+  baseURL: https://api.busup.com/v2
+  tags:
+  - Route Stops
+  properties:
+  - type: OpenAPI
+    url: openapi/busup-route-stops-api-openapi.yml
+- aid: busup:busup-routes-api
+  name: BusUp Routes API
+  description: The Routes API from BusUp — 5 operation(s) for routes.
+  humanURL: https://api.busup.com/api-docs
+  baseURL: https://api.busup.com/v2
+  tags:
+  - Routes
+  properties:
+  - type: OpenAPI
+    url: openapi/busup-routes-api-openapi.yml
+- aid: busup:busup-routesratesuserplans-api
+  name: BusUp Routes Rates User Plans API
+  description: The RoutesRatesUserPlans API from BusUp — 2 operation(s) for routesratesuserplans.
+  humanURL: https://api.busup.com/api-docs
+  baseURL: https://api.busup.com/v2
+  tags:
+  - RoutesRatesUserPlans
+  properties:
+  - type: OpenAPI
+    url: openapi/busup-routesratesuserplans-api-openapi.yml
+- aid: busup:busup-sites-api
+  name: BusUp Sites API
+  description: The Sites API from BusUp — 2 operation(s) for sites.
+  humanURL: https://api.busup.com/api-docs
+  baseURL: https://api.busup.com/v2
+  tags:
+  - Sites
+  properties:
+  - type: OpenAPI
+    url: openapi/busup-sites-api-openapi.yml
+- aid: busup:busup-student-api
+  name: BusUp Student API
+  description: The Student API from BusUp — 3 operation(s) for student.
+  humanURL: https://api.busup.com/api-docs
+  baseURL: https://api.busup.com/v2
+  tags:
+  - Student
+  properties:
+  - type: OpenAPI
+    url: openapi/busup-student-api-openapi.yml
+- aid: busup:busup-tickets-api
+  name: BusUp Tickets API
+  description: The Tickets API from BusUp — 2 operation(s) for tickets.
+  humanURL: https://api.busup.com/api-docs
+  baseURL: https://api.busup.com/v2
+  tags:
+  - Tickets
+  properties:
+  - type: OpenAPI
+    url: openapi/busup-tickets-api-openapi.yml
+- aid: busup:busup-user-api
+  name: BusUp User API
+  description: The User API from BusUp — 12 operation(s) for user.
+  humanURL: https://api.busup.com/api-docs
+  baseURL: https://api.busup.com/v2
+  tags:
+  - User
+  properties:
+  - type: OpenAPI
+    url: openapi/busup-user-api-openapi.yml
+- aid: busup:busup-user-plans-api
+  name: BusUp User Plans API
+  description: The User Plans API from BusUp — 4 operation(s) for user plans.
+  humanURL: https://api.busup.com/api-docs
+  baseURL: https://api.busup.com/v2
+  tags:
+  - User Plans
+  properties:
+  - type: OpenAPI
+    url: openapi/busup-user-plans-api-openapi.yml
+x-enrichment:
+  date: '2026-10-06'
+  status: enriched
+  artifacts_added: 12
+  pass: modular-v1
+  engine: identity=local,contract=local,surfaces=local,docs=local,regulatory=local

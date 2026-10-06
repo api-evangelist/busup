@@ -1,0 +1,570 @@
+openapi: 3.2.0
+info:
+  title: BusUp User API
+  description: BusUp API version 2
+  contact:
+    email: christian@busup.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 2.0.0
+servers:
+- url: http://api.busup.local/v2
+tags:
+- name: User
+paths:
+  /users:
+    get:
+      tags:
+      - User
+      summary: Find all Users
+      description: Returns all Users
+      operationId: index
+      parameters:
+      - name: filter.*.attribute
+        in: path
+        description: 'Filter Attribute. Ex: id'
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: filter.*.operator
+        in: path
+        description: 'Filter Operator. Ex: ='
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: filter.*.value
+        in: path
+        description: 'Filter Value. Ex: 1'
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: filter.*.scope
+        in: path
+        description: 'Filter Scope. Ex: local'
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: included
+        in: path
+        description: Include model relationships
+        required: true
+        schema:
+          type: string
+      - name: per_page
+        in: path
+        description: Load N entries per page
+        required: true
+        schema:
+          type: integer
+      - name: page
+        in: path
+        description: Load page N
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful operation
+        '401':
+          description: Unauthenticated
+        '404':
+          description: 'Not found: Model, Method or Relationship'
+        '500':
+          description: The action could not be completed
+      security:
+      - api_key: []
+    post:
+      tags:
+      - User
+      summary: Create User
+      description: Return User Created
+      operationId: Create
+      responses:
+        '201':
+          description: Successful operation
+        '401':
+          description: Unauthenticated
+        '422':
+          description: Invalid fields supplied
+        '500':
+          description: The action could not be completed
+      security:
+      - api_key: []
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: The email user
+                password:
+                  type: string
+                  description: The password user
+                first_name:
+                  type: string
+                  description: The name user
+                last_name:
+                  type: string
+                  description: The lastname user
+                phone_number:
+                  type: string
+                  description: The phone number user
+                language_id:
+                  type: integer
+                  description: The user language id
+              required:
+              - email
+              - password
+              - first_name
+              - last_name
+    patch:
+      tags:
+      - User
+      summary: Update the User
+      description: Updates a User
+      operationId: UpdateUser
+      responses:
+        '200':
+          description: Successful operation
+        '401':
+          description: Unauthenticated
+        '422':
+          description: Invalid fields supplied
+        '500':
+          description: The action could not be completed
+      security:
+      - api_key: []
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: The ID of the User
+                email:
+                  type: string
+                  description: The email user
+                first_name:
+                  type: string
+                  description: The name user
+                last_name:
+                  type: string
+                  description: The lastname user
+                phone_number:
+                  type: string
+                  description: The phone number user
+                language_id:
+                  type: integer
+                  description: The language id of user
+              required:
+              - id
+              - email
+              - first_name
+              - last_name
+  /users/{id}:
+    get:
+      tags:
+      - User
+      summary: Find a specific User
+      description: Returns a specific User
+      operationId: show
+      parameters:
+      - name: id
+        in: path
+        description: The ID of the User
+        required: true
+        schema:
+          type: integer
+      - name: included
+        in: path
+        description: Include model relationships
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful operation
+        '401':
+          description: Unauthenticated
+        '404':
+          description: 'Not found: Model or Relationship'
+        '500':
+          description: The action could not be completed
+      security:
+      - api_key: []
+    delete:
+      tags:
+      - User
+      summary: Delete User
+      description: Deletes an existing User.
+      operationId: deleteUser
+      parameters:
+      - name: id
+        in: path
+        description: The ID of the User
+        required: true
+        schema:
+          type: integer
+      - name: hard
+        in: path
+        description: Make a Hard-Delete
+        required: true
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Successful operation
+        '401':
+          description: Unauthenticated
+        '404':
+          description: Model not found
+        '500':
+          description: The action could not be completed
+      security:
+      - api_key: []
+  /userProfile:
+    get:
+      tags:
+      - User
+      summary: Find Users Login
+      description: Returns Users Login
+      operationId: ShowUserToken
+      parameters:
+      - name: included
+        in: path
+        description: Include model relationships
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful operation
+        '401':
+          description: Unauthenticated
+        '404':
+          description: 'Not found: Relationship'
+        '500':
+          description: The action could not be completed
+      security:
+      - api_key: []
+  /users/profile:
+    patch:
+      tags:
+      - User
+      summary: Update Profile User
+      operationId: UpdateProfile
+      responses:
+        '200':
+          description: Successful operation
+        '401':
+          description: Unauthenticated
+        '422':
+          description: Invalid fields supplied
+        '500':
+          description: The action could not be completed
+      security:
+      - api_key: []
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                first_name:
+                  type: string
+                  description: The name user
+                last_name:
+                  type: string
+                  description: The lastname user
+                phone_number:
+                  type: string
+                  description: The phone number user
+                language_id:
+                  type: integer
+                  description: The language id of user
+                picture:
+                  type: string
+                  description: The image of user
+  /users/countries:
+    put:
+      tags:
+      - User
+      summary: Associates countries to the User
+      description: 'Note: Removes the previous associated countries'
+      operationId: countries
+      responses:
+        '200':
+          description: Successful operation
+        '401':
+          description: Unauthenticated
+        '422':
+          description: Invalid fields supplied
+        '500':
+          description: The action could not be completed
+      security:
+      - api_key: []
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: The ID of the User
+                countries:
+                  type: array
+                  items:
+                    type: integer
+                  description: The user countries ids
+              required:
+              - id
+              - countries
+  /users/roles:
+    put:
+      tags:
+      - User
+      summary: Associates roles to the user
+      description: 'Note: Removes the previous associated roles'
+      operationId: roles
+      responses:
+        '200':
+          description: Successful operation
+        '401':
+          description: Unauthenticated
+        '422':
+          description: Invalid fields supplied
+        '500':
+          description: The action could not be completed
+      security:
+      - api_key: []
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: The ID that represents a User
+                roles:
+                  type: array
+                  items:
+                    type: integer
+                  description: The user roles ids
+              required:
+              - id
+              - roles
+  /users/password/request-reset:
+    post:
+      tags:
+      - User
+      summary: Request reset password
+      operationId: requestResetPassword
+      responses:
+        '200':
+          description: Successful operation
+        '404':
+          description: User not found
+        '500':
+          description: The action could not be completed
+      security:
+      - api_key: []
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: The user email
+              required:
+              - email
+  /users/password/check-reset-token:
+    post:
+      tags:
+      - User
+      summary: Check reset password token
+      operationId: checkResetPasswordToken
+      responses:
+        '200':
+          description: Successful operation
+        '404':
+          description: Token not found
+      security:
+      - api_key: []
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: string
+                  description: The token
+              required:
+              - token
+  /users/password/reset:
+    post:
+      tags:
+      - User
+      summary: Reset User Password
+      description: Sets a new password
+      operationId: resetPassword
+      responses:
+        '200':
+          description: Successful operation
+        '404':
+          description: Token or User not found
+        '500':
+          description: The action could not be completed
+      security:
+      - api_key: []
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: string
+                  description: The token
+                password:
+                  type: string
+                  description: The new password
+              required:
+              - token
+              - password
+  /users/change-password:
+    post:
+      tags:
+      - User
+      summary: Change User Password
+      operationId: changePassword
+      responses:
+        '200':
+          description: Successful operation
+        '401':
+          description: Unauthenticated
+        '422':
+          description: Invalid password supplied
+        '500':
+          description: The action could not be completed
+      security:
+      - api_key: []
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                curr_password:
+                  type: string
+                  description: The current user password
+                new_password:
+                  type: string
+                  description: The newer user password
+              required:
+              - curr_password
+              - new_password
+  /users/logout:
+    get:
+      tags:
+      - User
+      summary: LogOut User
+      description: Logs out the User
+      operationId: logout
+      responses:
+        '200':
+          description: Successful operation
+        '401':
+          description: Unauthenticated
+        '500':
+          description: The action could not be completed
+      security:
+      - api_key: []
+  /users_admins:
+    get:
+      tags:
+      - User
+      summary: Find All Users
+      description: Returns all Users
+      operationId: getUsersAdmins
+      parameters:
+      - name: filter.*.attribute
+        in: path
+        description: 'Filter Attribute. Ex: id'
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: filter.*.operator
+        in: path
+        description: 'Filter Operator. Ex: ='
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: filter.*.value
+        in: path
+        description: 'Filter Value. Ex: 1'
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: filter.*.scope
+        in: path
+        description: 'Filter Scope. Ex: local'
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: included
+        in: path
+        description: Include model relationships
+        required: true
+        schema:
+          type: string
+      - name: per_page
+        in: path
+        description: Load N entries per page
+        required: true
+        schema:
+          type: integer
+      - name: page
+        in: path
+        description: Load page N
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful operation
+        '401':
+          description: Unauthenticated
+        '404':
+          description: 'Not found: Model, Method or Relationship'
+        '500':
+          description: The action could not be completed
+      security:
+      - api_key: []
+      x-operation-id-source: normalized
+      x-operation-id-original: index

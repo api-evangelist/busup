@@ -1,0 +1,206 @@
+openapi: 3.2.0
+info:
+  title: BusUp Roles API
+  description: BusUp API version 2
+  contact:
+    email: christian@busup.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 2.0.0
+servers:
+- url: http://api.busup.local/v2
+tags:
+- name: Roles
+paths:
+  /roles:
+    get:
+      tags:
+      - Roles
+      summary: Find All the roles
+      description: Returns all the roles
+      operationId: index
+      parameters:
+      - name: filter.*.attribute
+        in: path
+        description: 'Filter Attribute. Ex: id'
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: filter.*.operator
+        in: path
+        description: 'Filter Operator. Ex: ='
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: filter.*.value
+        in: path
+        description: 'Filter Value. Ex: 1'
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: filter.*.scope
+        in: path
+        description: 'Filter Scope. Ex: local'
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: included
+        in: path
+        description: Include model relationships
+        required: true
+        schema:
+          type: string
+      - name: per_page
+        in: path
+        description: Load N entries per page
+        required: true
+        schema:
+          type: integer
+      - name: page
+        in: path
+        description: Load page N
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful operation
+        '401':
+          description: Unauthenticated
+        '404':
+          description: 'Not found: Model, Method or Relationship'
+        '500':
+          description: The action could not be completed
+      security:
+      - api_key: []
+    post:
+      tags:
+      - Roles
+      summary: Create Role
+      description: Return Role Created
+      operationId: Create
+      responses:
+        '201':
+          description: Successful operation
+        '401':
+          description: Unauthenticated
+        '422':
+          description: Invalid fields supplied
+        '500':
+          description: The action could not be completed
+      security:
+      - api_key: []
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: The name of role
+                display_name:
+                  type: string
+                  description: The name of how it will displayed
+                description:
+                  type: string
+                  description: The description of role
+                role_id:
+                  type: integer
+                  description: The role father
+                admin:
+                  type: integer
+                  description: 'Temp: Mark as admin role'
+                user_id:
+                  type: integer
+                  description: The ID of the user that made the action
+              required:
+              - name
+              - display_name
+              - description
+              - role_id
+              - user_id
+    patch:
+      tags:
+      - Roles
+      summary: Update the Role
+      description: Updates a Role
+      operationId: UpdateRole
+      responses:
+        '200':
+          description: Successful operation
+        '401':
+          description: Unauthenticated
+        '422':
+          description: Invalid fields supplied
+        '500':
+          description: The action could not be completed
+      security:
+      - api_key: []
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: The ID of the Role
+                display_name:
+                  type: string
+                  description: The name of how it will displayed
+                description:
+                  type: string
+                  description: The description of role
+                role_id:
+                  type: integer
+                  description: The role father
+                admin:
+                  type: integer
+                  description: 'Temp: Mark as admin role'
+                user_id:
+                  type: integer
+                  description: The ID of the user that made the action
+              required:
+              - id
+              - user_id
+  /roles/{role}:
+    get:
+      tags:
+      - Roles
+      summary: Find a specific Role
+      description: Returns a specific Role
+      operationId: show
+      parameters:
+      - name: id
+        in: path
+        description: The ID of the Role
+        required: true
+        schema:
+          type: integer
+      - name: included
+        in: path
+        description: Include model relationships
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful operation
+        '401':
+          description: Unauthenticated
+        '404':
+          description: 'Not found: Model or Relationship'
+        '500':
+          description: The action could not be completed
+      security:
+      - api_key: []

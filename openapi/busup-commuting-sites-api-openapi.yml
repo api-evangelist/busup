@@ -1,0 +1,252 @@
+openapi: 3.2.0
+info:
+  title: BusUp Commuting Sites API
+  description: BusUp API version 2
+  contact:
+    email: christian@busup.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 2.0.0
+servers:
+- url: http://api.busup.local/v2
+tags:
+- name: Commuting Sites
+paths:
+  /sites/vertical/commuting:
+    get:
+      tags:
+      - Commuting Sites
+      summary: Find all Commuting Sites
+      description: Returns all Sites of Commuting
+      operationId: index
+      parameters:
+      - name: filter.*.attribute
+        in: path
+        description: 'Filter Attribute. Ex: id'
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: filter.*.operator
+        in: path
+        description: 'Filter Operator. Ex: ='
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: filter.*.value
+        in: path
+        description: 'Filter Value. Ex: 1'
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: filter.*.scope
+        in: path
+        description: 'Filter Scope. Ex: local'
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: included
+        in: path
+        description: Include model relationships
+        required: true
+        schema:
+          type: string
+      - name: per_page
+        in: path
+        description: Load N entries per page
+        required: true
+        schema:
+          type: integer
+      - name: page
+        in: path
+        description: Load page N
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful operation
+        '401':
+          description: Unauthenticated
+        '404':
+          description: 'Not found: Model, Method or Relationship'
+        '500':
+          description: The action could not be completed
+      security:
+      - api_key: []
+  /sites/vertical/commuting/{id}:
+    get:
+      tags:
+      - Commuting Sites
+      summary: Find a specific Commuting Site
+      description: Returns a specific Site of Commuting
+      operationId: show
+      parameters:
+      - name: id
+        in: path
+        description: The ID of the Commuting Site
+        required: true
+        schema:
+          type: integer
+      - name: included
+        in: path
+        description: Include model relationships
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful operation
+        '401':
+          description: Unauthenticated
+        '404':
+          description: 'Not found: Model or Relationship'
+        '500':
+          description: The action could not be completed
+      security:
+      - api_key: []
+  /sites/vertical/commuting/{id}/routes:
+    get:
+      tags:
+      - Commuting Sites
+      summary: Find all Routes from a specific Commuting Site
+      description: Returns all Routes from a specific Site of Commuting
+      operationId: routes
+      parameters:
+      - name: id
+        in: path
+        description: The ID of the Commuting Site
+        required: true
+        schema:
+          type: integer
+      - name: filter.*.attribute
+        in: path
+        description: 'Filter Attribute. Ex: id'
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: filter.*.operator
+        in: path
+        description: 'Filter Operator. Ex: ='
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: filter.*.value
+        in: path
+        description: 'Filter Value. Ex: 1'
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: filter.*.scope
+        in: path
+        description: 'Filter Scope. Ex: local'
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: included
+        in: path
+        description: Include model relationships
+        required: true
+        schema:
+          type: string
+      - name: per_page
+        in: path
+        description: Load N entries per page
+        required: true
+        schema:
+          type: integer
+      - name: page
+        in: path
+        description: Load page N
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful operation
+        '401':
+          description: Unauthenticated
+        '404':
+          description: 'Not found: Model or Relationship'
+        '500':
+          description: The action could not be completed
+      security:
+      - api_key: []
+  /getTrackpointsRoutes:
+    get:
+      tags:
+      - Commuting Sites
+      summary: Find All the sites of commuting
+      description: Returns all the sites of commuting
+      operationId: getGetTrackpointsRoutes
+      responses:
+        '200':
+          description: successful operation
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Pet not found
+      x-operation-id-source: normalized
+      x-operation-id-original: index
+  /getStopsRequests:
+    get:
+      tags:
+      - Commuting Sites
+      summary: Find All the sites of commuting
+      description: Returns all the sites of commuting
+      operationId: getGetStopsRequests
+      responses:
+        '200':
+          description: successful operation
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Pet not found
+      x-operation-id-source: normalized
+      x-operation-id-original: index
+  /sites/vertical/leisure:
+    get:
+      tags:
+      - Commuting Sites
+      summary: Find All the sites of leisure
+      description: Returns all the sites of leisure
+      operationId: getSitesVerticalLeisure
+      responses:
+        '200':
+          description: successful operation
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Pet not found
+      x-operation-id-source: normalized
+      x-operation-id-original: index
+  /sites/vertical/leisure/{company_event}:
+    get:
+      tags:
+      - Commuting Sites
+      summary: Find a specific site of leisure
+      description: Returns a specific site of leisure
+      operationId: Show
+      responses:
+        '200':
+          description: successful operation
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Pet not found

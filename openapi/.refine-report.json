@@ -1,7 +1,7 @@
 {
   "provider": "busup",
   "sources": [
-    "busup-openapi.json"
+    "_original/busup-openapi.json"
   ],
   "outputs": [
     "busup-billing-information-api-openapi.yml",
@@ -30,12 +30,11 @@
     "busup-user-api-openapi.yml",
     "busup-user-plans-api-openapi.yml"
   ],
-  "archived": [
-    "archived openapi/busup-openapi.json"
-  ],
+  "archived": [],
   "errors": [],
   "warnings": [],
   "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
     "busup-openapi.json: upgraded swagger 2.0 -> OpenAPI 3.2.0",
     "busup-openapi.json: declared missing tag: Billing information",
     "busup-openapi.json: declared missing tag: CheckIn",
@@ -62,7 +61,33 @@
     "busup-openapi.json: declared missing tag: Tickets",
     "busup-openapi.json: declared missing tag: User",
     "busup-openapi.json: declared missing tag: User Plans",
-    "apis.yml register: written (+25 apis, 25 total)"
+    "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "busup-billing-information-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "busup-checkin-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "busup-commuting-companies-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "busup-commuting-employees-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "busup-commuting-sites-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "busup-consumptions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "busup-countries-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "busup-credit-memos-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "busup-datalog-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "busup-invoices-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "busup-leisure-companies-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "busup-orders-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "busup-permissions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "busup-promoters-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "busup-role-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "busup-roles-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "busup-route-rate-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "busup-route-stops-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "busup-routes-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "busup-routesratesuserplans-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "busup-sites-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "busup-student-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "busup-tickets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "busup-user-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "busup-user-plans-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

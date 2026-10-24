@@ -25,6 +25,12 @@ modified: '2026-10-06'
 tags:
 - Company
 - Procurement
+- Spend Management
+- Software-as-a-Service
+- Automation
+tags_raw:
+- Company
+- Procurement
 - Spend-Management
 - SaaS
 - Automation
@@ -78,6 +84,8 @@ apis:
   humanURL: https://api.busup.com/api-docs
   baseURL: https://api.busup.com/v2
   tags:
+  - Check-in
+  tags_raw:
   - CheckIn
   properties:
   - type: OpenAPI
@@ -178,6 +186,8 @@ apis:
   humanURL: https://api.busup.com/api-docs
   baseURL: https://api.busup.com/v2
   tags:
+  - Order
+  tags_raw:
   - Orders
   properties:
   - type: OpenAPI
@@ -278,6 +288,8 @@ apis:
   humanURL: https://api.busup.com/api-docs
   baseURL: https://api.busup.com/v2
   tags:
+  - Students
+  tags_raw:
   - Student
   properties:
   - type: OpenAPI
@@ -288,6 +300,8 @@ apis:
   humanURL: https://api.busup.com/api-docs
   baseURL: https://api.busup.com/v2
   tags:
+  - Ticketing
+  tags_raw:
   - Tickets
   properties:
   - type: OpenAPI
